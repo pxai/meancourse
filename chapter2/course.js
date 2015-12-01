@@ -11,7 +11,14 @@ var mongoose = require('mongoose');
  *                a student should take before taking this course.
  */
 var schema = new mongoose.Schema({
-  // Implement schema here!
+  _id: { type: String, required: true },
+  title: { type: String, required: true,  maxlength: 140 },
+  description: { type: String, required: true },
+  requirements: [{ type: String, required: true }]
 });
 
+/*schema.path('title').validate(function (title) {
+    return title.length <= 140;
+}, 'The maximum length is 140.');
+*/
 module.exports = schema;
