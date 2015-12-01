@@ -1,4 +1,4 @@
-var db = require('./connect');
+//var db = require('./connect');
 /*
  *  Inserts "doc" into the collection "movies".
  */
@@ -15,7 +15,9 @@ exports.insert = function(db, doc, callback) {
  *  http://mongodb.github.io/node-mongodb-native/2.0/api/Cursor.html#sort
  */
 exports.byDirector = function(db, director, callback) { 
-  db.collection('movies').find({"director":director}).toArray(callback);
+  var ar = db.collection('movies').find({'director':director}).sort([['title',-1]]).toArray(callback(err, items));
+  	  callback(err, []);
+
+  });
   // TODO: implement
-  callback(null, []);
 };
